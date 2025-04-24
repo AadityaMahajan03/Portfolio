@@ -7,7 +7,7 @@ Here's a polished, professional `README.md` for your portfolio repository, custo
 A stunning 3D portfolio showcasing my work as a developer. Built with modern web technologies for an immersive experience.
 
 [![Live Demo](https://img.shields.io/badge/-Live%20Demo-brightgreen)](https://yashmahajan.netlify.app)
-[![GitHub Stars](https://img.shields.io/github/stars/AadityaMahajan03/Aaditya_Mahajan_Portfolio?style=social)](https://github.com/AadityaMahajan03/Aaditya_Mahajan_Portfolio/stargazers)
+[![GitHub Stars](https://img.shields.io/github/stars/AadityaMahajan03/Aaditya_Mahajan_Portfolio?style=social)](https://github.com/AadityaMahajan03/Portfolio)
 
 ## 📋 Table of Contents
 - [Introduction](#-introduction)
