@@ -3,12 +3,8 @@ Here's a polished, professional `README.md` for your portfolio repository, custo
 ```markdown
 # 3D Developer Portfolio ✨  
 *React.js · Three.js · Tailwind CSS*
-
-A stunning 3D portfolio showcasing my work as a developer. Built with modern web technologies for an immersive experience.
-
-[![Live Demo](https://img.shields.io/badge/-Live%20Demo-brightgreen)](https://yashmahajan.netlify.app)
+[![Live Demo](https://img.shields.io/badge/-Live%20Demo-brightgreen)](https://aadityamahajan.netlify.app/)
 [![GitHub Stars](https://img.shields.io/github/stars/AadityaMahajan03/Aaditya_Mahajan_Portfolio?style=social)](https://github.com/AadityaMahajan03/Portfolio)
-
 ## 📋 Table of Contents
 - [Introduction](#-introduction)
 - [Tech Stack](#-tech-stack)
@@ -80,7 +76,7 @@ To personalize this portfolio:
 4. Add your EmailJS credentials in `.env`
 
 ## 🔗 Links
-- [Live Demo](https://yashmahajan.netlify.app)
+- [Live Demo](https://aadityamahajan.netlify.app/)
 - [3D Models Source](https://sketchfab.com)
 - [EmailJS Setup Guide](https://www.emailjs.com/docs/)
 
