@@ -3,8 +3,6 @@ Here's a polished, professional `README.md` for your portfolio repository, custo
 ```markdown
 # 3D Developer Portfolio ✨  
 *React.js · Three.js · Tailwind CSS*
-[![Live Demo](https://img.shields.io/badge/-Live%20Demo-brightgreen)](https://aadityamahajan.netlify.app/)
-[![GitHub Stars](https://img.shields.io/github/stars/AadityaMahajan03/Aaditya_Mahajan_Portfolio?style=social)](https://github.com/AadityaMahajan03/Portfolio)
 ## 📋 Table of Contents
 - [Introduction](#-introduction)
 - [Tech Stack](#-tech-stack)
