@@ -113,8 +113,8 @@ const experiences = [
   {
     title: "Campus Ambassador",
     company_name: "GeeksforGeeks",
-    icon: gfg,
-    iconBg: "#E6DEDD",
+    icon: shopify,
+    iconBg: "#383E56",
     date: "May 2025 - Present",
     points: [
       "Represented GeeksforGeeks on campus as a Campus Ambassador.",
