@@ -109,17 +109,29 @@ const technologies = [
     icon: docker,
   },
 ];
-
 const experiences = [
   {
+    title: "Campus Ambassador",
+    company_name: "GeeksforGeeks",
+    icon: gfg,
+    iconBg: "#E6DEDD",
+    date: "May 2025 - Present",
+    points: [
+      "Represented GeeksforGeeks on campus as a Campus Ambassador.",
+      "Promoted coding culture and GfG events among peers.",
+      "Organized workshops and sessions to enhance student engagement.",
+      "Collaborated with the GfG team to drive outreach and participation."
+    ],
+  },
+  {
     title: "Web Developer",
-    company_name: "Om Sai Traders pvt ltd , Dhule",
+    company_name: "Om Sai Traders Pvt Ltd, Dhule",
     icon: meta,
     iconBg: "#E6DEDD",
     date: "Apr 2023 - May 2023",
     points: [
-      "Worked as a Web developer in a 6-week internship program.",
-      "Developed an Application using Django, Mediapipe, SQLite Projects",
+      "Worked as a Web Developer in a 6-week internship program.",
+      "Developed an application using Django, Mediapipe, and SQLite.",
     ],
   },
   {
@@ -129,12 +141,13 @@ const experiences = [
     iconBg: "#383E56",
     date: "Jan 2025 - Feb 2025",
     points: [
-      "Completed a one-month remote web development internship at Unified Mentor. ",
-      "Worked on designing, developing optimizing web applications while enhancing problem-solving skills.",
-      "understanding of industry best practices",
+      "Completed a one-month remote web development internship.",
+      "Designed, developed, and optimized web applications while enhancing problem-solving skills.",
+      "Gained understanding of industry best practices.",
     ],
   },
 ];
+
 
 const projects = [
   //{
