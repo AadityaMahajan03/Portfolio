@@ -5,9 +5,8 @@ import herobg from "../assets/herobg.png";
 
 const Hero = () => {
   return (
-    <section
+   <section className="relative w-full h-[100vh] sm:h-screen mx-auto"
 
-      className="relative w-full h-screen mx-auto"
       style={{
         backgroundImage: `url(${herobg})`,
         backgroundSize: "cover",
