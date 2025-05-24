@@ -1,10 +1,13 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import { OrbitControls, Preload, useGLTF, Html } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 
+// Preload model outside the component
+useGLTF.preload("/desktop_pc/scene1.glb");
+
 const Computers = ({ isMobile }) => {
-  const { scene } = useGLTF("./desktop_pc/scene1.glb");
+  const { scene } = useGLTF("/desktop_pc/scene1.glb");
 
   return (
     <mesh>
@@ -20,11 +23,36 @@ const Computers = ({ isMobile }) => {
       <pointLight intensity={1} />
       <primitive
         object={scene}
-        scale={isMobile ? 0.45 : 0.75} // tweaked scale for mobile
-        position={isMobile ? [0, -1.9, -1.6] : [0, -3.25, -1.5]} // better fit on mobile
+        scale={isMobile ? 0.45 : 0.75}
+        position={isMobile ? [0, -1.9, -1.6] : [0, -3.25, -1.5]}
         rotation={[-0.01, -0.2, -0.1]}
       />
     </mesh>
+  );
+};
+
+// Optional: error boundary to prevent app crash
+const ErrorBoundary = ({ children }) => {
+  const [hasError, setHasError] = useState(false);
+  return (
+    <group
+      onPointerDownCapture={(e) => {
+        if (e.error) {
+          console.error("3D error:", e.error);
+          setHasError(true);
+        }
+      }}
+    >
+      {hasError ? (
+        <Html>
+          <div style={{ color: 'white', background: '#000', padding: '10px', borderRadius: '8px' }}>
+            Failed to load 3D model.
+          </div>
+        </Html>
+      ) : (
+        children
+      )}
+    </group>
   );
 };
 
@@ -55,13 +83,16 @@ const ComputersCanvas = () => {
         }}
         gl={{ preserveDrawingBuffer: true }}
       >
+        <color attach="background" args={["#1a1a1a"]} />
         <Suspense fallback={<CanvasLoader />}>
           <OrbitControls
             enableZoom={false}
             maxPolarAngle={Math.PI / 2}
             minPolarAngle={Math.PI / 2}
           />
-          <Computers isMobile={isMobile} />
+          <ErrorBoundary>
+            <Computers isMobile={isMobile} />
+          </ErrorBoundary>
         </Suspense>
         <Preload all />
       </Canvas>
