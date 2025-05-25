@@ -7,7 +7,7 @@ import CanvasLoader from "../Loader";
 useGLTF.preload("/desktop_pc/scene1.glb");
 
 const Computers = ({ isMobile }) => {
-  const { scene } = useGLTF("/desktop_pc/scene1.glb");
+  const { scene } = useGLB("/desktop_pc/scene1.glb");
 
   return (
     <mesh>
