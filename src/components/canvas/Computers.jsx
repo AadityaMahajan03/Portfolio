@@ -6,8 +6,8 @@ import CanvasLoader from "../Loader";
 const Computers = ({ isMobile }) => {
   // Choose model path based on device type
   const modelPath = isMobile
-    ? ".public/desktop_pc/output.glb"        // smaller model for mobile
-    : ".public/desktop_pc/optimized.glb";    // full model for desktop
+    ? "./desktop_pc/output.glb"        // smaller model for mobile
+    : "./desktop_pc/optimized.glb";    // full model for desktop
 
   const { scene } = useGLTF(modelPath);
 
