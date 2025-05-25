@@ -7,7 +7,7 @@ const Hero = () => {
     <section
       className="relative w-full min-h-screen mx-auto"
       style={{
-        backgroundImage: `url("/assets/herobg.png")`, // Use public path
+        backgroundImage: "url('/assets/herobg.png')" // Use public path
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
