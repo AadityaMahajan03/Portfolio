@@ -40,7 +40,7 @@ const Hero = () => {
       </div>
 
       {/* Professional PC Image Animation for Mobile */}
-      <div className="block sm:hidden absolute bottom-16 w-full flex justify-center items-center">
+      <div className="block sm:hidden absolute bottom-28 w-full flex justify-center items-center">
         <motion.div
           className="relative"
           initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ const Hero = () => {
           <motion.img
             src="/desktop_pc/pc.png"
             alt="3D PC Model"
-            className="w-72 h-auto xs:w-80 drop-shadow-2xl"
+            className="w-96 h-auto xs:w-[28rem] sm:w-[32rem] drop-shadow-2xl"
             animate={{
               y: [0, -8, 0],
             }}
@@ -79,7 +79,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute xs:bottom-2 bottom-4 w-full flex justify-center items-center z-20">
+      <div className="absolute xs:bottom-6 bottom-8 w-full flex justify-center items-center z-20">
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div
