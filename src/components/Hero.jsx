@@ -6,7 +6,7 @@ import herobg from "../assets/herobg.png";
 const Hero = () => {
   return (
     <section
-      className="relative w-full h-[100vh] sm:h-screen mx-auto"
+      className="relative w-full h-[100vh] sm:h-screen mx-auto pb-16"
       style={{
         backgroundImage: `url(${herobg})`,
         backgroundSize: "cover",
@@ -40,7 +40,7 @@ const Hero = () => {
       </div>
 
       {/* Professional PC Image Animation for Mobile */}
-      <div className="block sm:hidden absolute bottom-48 w-full flex justify-center items-center">
+      <div className="block sm:hidden absolute bottom-64 w-full flex justify-center items-center">
         <motion.div
           className="relative"
           initial={{ opacity: 0, y: 20 }}
@@ -58,21 +58,21 @@ const Hero = () => {
               y: {
                 duration: 4,
                 repeat: Infinity,
-                ease: "easeInOut"
-              }
+                ease: "easeInOut",
+              },
             }}
           />
-          
+
           {/* Subtle Glow Effect */}
           <motion.div
             className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full blur-xl"
             animate={{
-              opacity: [0.3, 0.5, 0.3]
+              opacity: [0.3, 0.5, 0.3],
             }}
             transition={{
               duration: 4,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "easeInOut",
             }}
           />
         </motion.div>
