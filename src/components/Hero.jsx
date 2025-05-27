@@ -6,7 +6,7 @@ import herobg from "../assets/herobg.png";
 const Hero = () => {
   return (
     <section
-      className="relative w-full h-auto sm:h-screen mx-auto pt-20 pb-20"
+      className="relative w-full h-[100vh] sm:h-screen mx-auto"
       style={{
         backgroundImage: `url(${herobg})`,
         backgroundSize: "cover",
@@ -15,7 +15,7 @@ const Hero = () => {
     >
       {/* Hero Text */}
       <div
-        className={`max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
+        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
         <div className="flex flex-col justify-center items-center mt-5">
           <div className="w-5 h-5 rounded-full bg-[#915EFF]" />
@@ -35,12 +35,12 @@ const Hero = () => {
       </div>
 
       {/* Show 3D Model on Desktop */}
-      <div className="hidden sm:block absolute top-0 right-0 w-full h-full pointer-events-none">
+      <div className="hidden sm:block">
         <ComputersCanvas />
       </div>
 
-      {/* Mobile PC Image — Below Text */}
-      <div className="block sm:hidden mt-20 w-full flex justify-center items-center">
+      {/* Professional PC Image Animation for Mobile */}
+      <div className="block sm:hidden absolute bottom-48 w-full flex justify-center items-center">
         <motion.div
           className="relative"
           initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ const Hero = () => {
           <motion.img
             src="/desktop_pc/pc.png"
             alt="3D PC Model"
-            className="w-80 h-auto drop-shadow-2xl"
+            className="w-96 h-auto xs:w-[28rem] sm:w-[32rem] md:w-[36rem] drop-shadow-2xl"
             animate={{
               y: [0, -8, 0],
             }}
@@ -58,26 +58,28 @@ const Hero = () => {
               y: {
                 duration: 4,
                 repeat: Infinity,
-                ease: "easeInOut",
-              },
+                ease: "easeInOut"
+              }
             }}
           />
-
-          {/* Subtle Glow */}
+          
+          {/* Subtle Glow Effect */}
           <motion.div
             className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full blur-xl"
-            animate={{ opacity: [0.3, 0.5, 0.3] }}
+            animate={{
+              opacity: [0.3, 0.5, 0.3]
+            }}
             transition={{
               duration: 4,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: "easeInOut"
             }}
           />
         </motion.div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="mt-16 flex justify-center items-center">
+      <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div
