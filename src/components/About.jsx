@@ -45,43 +45,59 @@ const About = () => {
         <h2 className={styles.sectionHeadText}>Overview.</h2>
       </motion.div>
 
-      <div className='mt-12 flex gap-8'>
-        <a
-          href='https://github.com/AadityaMahajan03'
-          target='_blank'
-          rel='noopener noreferrer'
-          className='bg-tertiary rounded-[10px] py-3 px-3 flex'
-        >
-          GitHub
-        </a>
-
-        <a
-          href='https://www.linkedin.com/in/aaditya-mahajan0/'
-          target='_blank'
-          rel='noopener noreferrer'
-          className='bg-tertiary rounded-[10px] py-3 px-3 flex'
-        >
-          LinkedIn
-        </a>
-
-        <a
-          href='https://leetcode.com/u//'
-          target='_blank'
-          rel='noopener noreferrer'
-          className='bg-tertiary rounded-[10px] py-3 px-3 flex'
-        >
-          LeetCode
-        </a>
-
-        <a
-          href={cv}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='bg-tertiary rounded-[10px] py-3 px-3 flex'
-        >
-          See CV
-        </a>
-      </div>
+     <div className='mt-12 flex flex-col gap-4 sm:flex-row sm:gap-8'>
+  {/* First row - 3 buttons on mobile, all 4 on desktop */}
+  <div className='flex gap-4 sm:gap-8 justify-center sm:justify-start'>
+    <a
+      href='https://github.com/AadityaMahajan03'
+      target='_blank'
+      rel='noopener noreferrer'
+      className='bg-tertiary rounded-[10px] py-3 px-3 flex-1 sm:flex-none text-center sm:text-left'
+    >
+      GitHub
+    </a>
+    
+    <a
+      href='https://www.linkedin.com/in/aaditya-mahajan0/'
+      target='_blank'
+      rel='noopener noreferrer'
+      className='bg-tertiary rounded-[10px] py-3 px-3 flex-1 sm:flex-none text-center sm:text-left'
+    >
+      LinkedIn
+    </a>
+    
+    <a
+      href='https://leetcode.com/u//'
+      target='_blank'
+      rel='noopener noreferrer'
+      className='bg-tertiary rounded-[10px] py-3 px-3 flex-1 sm:flex-none text-center sm:text-left'
+    >
+      LeetCode
+    </a>
+    
+    {/* CV button - hidden on mobile in first row, shown on desktop */}
+    <a
+      href={cv}
+      target='_blank'
+      rel='noopener noreferrer'
+      className='bg-tertiary rounded-[10px] py-3 px-3 hidden sm:flex'
+    >
+      See CV
+    </a>
+  </div>
+  
+  {/* Second row - CV button only on mobile */}
+  <div className='flex justify-center sm:hidden'>
+    <a
+      href={cv}
+      target='_blank'
+      rel='noopener noreferrer'
+      className='bg-tertiary rounded-[10px] py-3 px-3 w-32 text-center'
+    >
+      See CV
+    </a>
+  </div>
+</div>
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
