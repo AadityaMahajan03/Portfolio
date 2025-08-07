@@ -60,8 +60,12 @@ const Navbar = () => {
         animate={{ y: 0 }}
         transition={{ type: "spring", damping: 10 }}
         className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 ${
-          scrolled ? "bg-primary/80 backdrop-blur-sm" : "bg-transparent"
-        } transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}
+          scrolled ? "bg-primary" : "bg-transparent"
+        }`}
+        style={{
+          backgroundColor: scrolled ? 'var(--primary)' : 'transparent',
+          backdropFilter: 'none' // Remove backdrop filter completely
+        }}
       >
         <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
           <Link 
@@ -173,44 +177,28 @@ const Navbar = () => {
             <AnimatePresence>
               {toggle && (
                 <motion.div
-                  className="p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl backdrop-blur-sm shadow-xl"
+                  className="p-6 bg-primary absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl"
                   initial={{ opacity: 0, y: -20, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -20, scale: 0.95 }}
                   transition={{ type: "spring", damping: 20 }}
                 >
                   <motion.ul 
-                    className="list-none flex flex-col gap-4"
-                    variants={navVariants}
-                    initial="hidden"
-                    animate="visible"
+                    className="list-none flex justify-end items-start flex-col gap-4"
                   >
                     {navLinks.map((nav) => (
                       <motion.li
                         key={nav.id}
-                        variants={itemVariants}
-                        whileHover={{ x: 5 }}
-                        className="relative overflow-hidden"
+                        className="font-poppins font-medium cursor-pointer text-[16px] relative"
+                        onClick={() => {
+                          setToggle(false);
+                          setActive(nav.title);
+                        }}
                       >
-                        <a
+                        <a 
                           href={`#${nav.id}`}
-                          className={`flex items-center py-2 px-3 rounded-lg ${
-                            active === nav.title 
-                              ? "bg-white/10 text-white" 
-                              : "text-secondary hover:bg-white/5"
-                          } transition-all duration-300`}
-                          onClick={() => {
-                            setToggle(false);
-                            setActive(nav.title);
-                          }}
+                          className={`${active === nav.title ? "text-white" : "text-secondary"}`}
                         >
-                          {active === nav.title && (
-                            <motion.span
-                              className="absolute left-0 top-0 h-full w-1 bg-cyan-400 rounded-r-full"
-                              layoutId="mobileIndicator"
-                              transition={{ type: "spring", stiffness: 300 }}
-                            />
-                          )}
                           {nav.title}
                         </a>
                       </motion.li>
@@ -227,9 +215,13 @@ const Navbar = () => {
           style={{ width }}
         />
       </motion.nav>
-      
-      {/* This spacer ensures content doesn't get hidden behind the fixed navbar */}
-      <div className="h-20"></div>
+
+      {/* Add margin-top to the first section below navbar */}
+      <style jsx global>{`
+        #hero {
+          margin-top: 80px;
+        }
+      `}</style>
     </>
   );
 };
