@@ -38,66 +38,83 @@ const ServiceCard = ({ index, title, icon }) => (
 const About = () => {
   return (
     <>
-      {/* Move heading section higher for mobile */}
+      {/* Heading section */}
       <motion.div variants={textVariant()} className='-mt-20 sm:mt-0'>
         <p className={styles.sectionSubText}>Introduction</p>
         <h2 className={styles.sectionHeadText}>Overview.</h2>
       </motion.div>
 
       {/* Social buttons section */}
-      <div className='mt-12 flex flex-col gap-4 sm:flex-row sm:gap-8'>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className='mt-12 flex flex-col gap-4 sm:flex-row sm:gap-8'
+      >
         {/* First row - 3 buttons on mobile, all 4 on desktop */}
         <div className='flex gap-4 sm:gap-8 justify-center sm:justify-start flex-wrap'>
-          <a
-            href='https://github.com/AadityaMahajan03'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='bg-tertiary rounded-[10px] py-3 px-3 flex-1 sm:flex-none text-center'
-          >
-            GitHub
-          </a>
+          {[
+            {
+              name: "GitHub",
+              link: "https://github.com/AadityaMahajan03",
+            },
+            {
+              name: "LinkedIn",
+              link: "https://www.linkedin.com/in/aaditya-mahajan0/",
+            },
+            {
+              name: "LeetCode",
+              link: "https://leetcode.com/u/",
+            },
+          ].map(({ name, link }) => (
+            <motion.a
+              key={name}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className='bg-tertiary rounded-[10px] py-3 px-3 flex-1 sm:flex-none text-center shadow-md hover:shadow-lg transition'
+            >
+              {name}
+            </motion.a>
+          ))}
 
-          <a
-            href='https://www.linkedin.com/in/aaditya-mahajan0/'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='bg-tertiary rounded-[10px] py-3 px-3 flex-1 sm:flex-none text-center'
-          >
-            LinkedIn
-          </a>
-
-          <a
-            href='https://leetcode.com/u/'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='bg-tertiary rounded-[10px] py-3 px-3 flex-1 sm:flex-none text-center'
-          >
-            LeetCode
-          </a>
-
-          {/* CV button - hidden on mobile in first row, shown on desktop */}
-          <a
+          {/* CV button - visible on desktop only */}
+          <motion.a
             href={cv}
             target='_blank'
             rel='noopener noreferrer'
-            className='bg-tertiary rounded-[10px] py-3 px-3 hidden sm:flex'
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className='bg-tertiary rounded-[10px] py-3 px-3 hidden sm:flex text-center shadow-md hover:shadow-lg transition'
           >
             See CV
-          </a>
+          </motion.a>
         </div>
 
         {/* Second row - CV button only on mobile */}
-        <div className='flex justify-center sm:hidden'>
-          <a
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className='flex justify-center sm:hidden'
+        >
+          <motion.a
             href={cv}
             target='_blank'
             rel='noopener noreferrer'
-            className='bg-tertiary rounded-[10px] py-3 px-3 w-32 text-center'
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className='bg-tertiary rounded-[10px] py-3 px-3 w-32 text-center shadow-md hover:shadow-lg transition'
           >
             See CV
-          </a>
-        </div>
-      </div>
+          </motion.a>
+        </motion.div>
+      </motion.div>
 
       {/* Description paragraph */}
       <motion.p
