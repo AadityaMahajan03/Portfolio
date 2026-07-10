@@ -216,12 +216,7 @@ const Navbar = () => {
         />
       </motion.nav>
 
-      {/* Add margin-top to the first section below navbar */}
-      <style jsx global>{`
-        #hero {
-          margin-top: 80px;
-        }
-      `}</style>
+
     </>
   );
 };

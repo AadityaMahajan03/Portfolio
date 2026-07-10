@@ -4,14 +4,11 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 
 const Computers = ({ isMobile }) => {
-  const modelPath = isMobile
-    ? "./desktop_pc/output.glb"
-    : "./desktop_pc/optimized.glb";
+  const modelPath = "./desktop_pc/output.glb";
 
   const { scene } = useGLTF(modelPath);
 
   if (!scene) {
-    console.error("Model failed to load:", modelPath);
     return null;
   }
 
@@ -39,29 +36,31 @@ const Computers = ({ isMobile }) => {
 
 const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [showFallback, setShowFallback] = useState(false);
 
   useEffect(() => {
+    const timer = setTimeout(() => setShowFallback(true), 5000);
+
     const mediaQuery = window.matchMedia("(max-width: 768px)");
     setIsMobile(mediaQuery.matches);
-
     const handleMediaQueryChange = (event) => {
       setIsMobile(event.matches);
     };
-
     mediaQuery.addEventListener("change", handleMediaQueryChange);
-    return () => mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    return () => {
+      clearTimeout(timer);
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
   }, []);
 
-  if (isMobile) {
-    // 📱 Render image on mobile
+  if (showFallback) {
     return (
-      <div style={{ width: "100%", height: "100vh", textAlign: "center" }}>
+      <div style={{ width: "100%", height: "100vh" }}>
         <img
-  src="/desktop_pc/pc.png"
-  alt="Computer Model"
-  style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }}
-/>
-
+          src="/desktop_pc/pc.png"
+          alt="Computer Model"
+          style={{ width: "100%", height: "100%", objectFit: "contain" }}
+        />
       </div>
     );
   }
@@ -94,7 +93,6 @@ const ComputersCanvas = () => {
   );
 };
 
-// Only preload for desktop since mobile doesn't use models
-useGLTF.preload("./desktop_pc/optimized.glb");
+useGLTF.preload("./desktop_pc/output.glb");
 
 export default ComputersCanvas;

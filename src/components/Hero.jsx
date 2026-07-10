@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { styles } from "../styles";
-import { ComputersCanvas } from "./canvas";
 import herobg from "../assets/herobg.png";
 
 const Hero = () => {
@@ -22,30 +21,63 @@ const Hero = () => {
 
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm <span className="text-[#915EFF]">Aaditya Mahajan</span>
+            <span className="text-[#915EFF]">Website</span> & App Developer
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            A passionate and adaptive tech enthusiast turning
+            I build modern websites, web applications, and Android apps
             <br className="sm:block hidden" />
-            bold visions into reality.
+            for businesses and startups.
           </p>
-        </div>
-      </div>
 
-      {/* ======= Desktop 3D Model ======= */}
-      <div className="hidden sm:block">
-        <ComputersCanvas />
+          <div className="mt-8 flex gap-4">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              className="bg-[#915EFF] text-white font-medium py-3 px-8 rounded-lg shadow-lg shadow-[#915EFF]/30 hover:shadow-[#915EFF]/50 transition"
+            >
+              Let's Talk
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+              className="border border-white/30 text-white font-medium py-3 px-8 rounded-lg hover:bg-white/10 transition"
+            >
+              My Work
+            </motion.button>
+          </div>
+        </div>
       </div>
 
       {/* ======= Mobile Layout ======= */}
       <div className="sm:hidden flex flex-col items-center justify-center px-6 pt-20 pb-10 text-center space-y-6">
         <div>
           <h1 className="text-4xl font-bold text-white">
-            Hi, I'm <span className="text-[#915EFF]">Aaditya Mahajan</span>
+            <span className="text-[#915EFF]">Website</span> & App Developer
           </h1>
           <p className="mt-2 text-white-100 text-base leading-relaxed">
-            A passionate and adaptive tech enthusiast turning bold visions into reality.
+            I build modern websites, web applications, and Android apps for businesses and startups.
           </p>
+
+          <div className="flex gap-4 justify-center">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              className="bg-[#915EFF] text-white font-medium py-3 px-6 rounded-lg shadow-lg shadow-[#915EFF]/30"
+            >
+              Let's Talk
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+              className="border border-white/30 text-white font-medium py-3 px-6 rounded-lg"
+            >
+              My Work
+            </motion.button>
+          </div>
         </div>
 
         {/* ======= Mobile PC Image (Enlarged) ======= */}

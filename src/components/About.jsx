@@ -6,128 +6,117 @@ import { styles } from "../styles";
 import { services } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
-import cv from "../assets/aaditya_cv.pdf";
 
-const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className='xs:w-[250px] w-full'>
-    <motion.div
-      variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-      className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
-    >
-      <div
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
-      >
-        <img
-          src={icon}
-          alt='web-development'
-          className='w-16 h-16 object-contain'
-        />
-        <h3 className='text-white text-[20px] font-bold text-center'>
-          {title}
-        </h3>
+const ServiceCard = ({ index, title, icon, items }) => (
+  <motion.div
+    variants={fadeIn("right", "spring", index * 0.5, 0.75)}
+    className='w-full h-full'
+  >
+    <div className='bg-tertiary rounded-2xl px-5 py-5 h-full border border-[#0f3460]/20 flex flex-col'>
+      {/* Header */}
+      <div className='flex items-center gap-3 mb-4'>
+        <div className='w-10 h-10 rounded-lg bg-[#915EFF]/15 flex items-center justify-center flex-shrink-0'>
+          <img src={icon} alt={title} className='w-5 h-5 object-contain' />
+        </div>
+        <h3 className='text-white text-[15px] font-semibold leading-tight'>{title}</h3>
       </div>
-    </motion.div>
-  </Tilt>
+
+      {/* Items */}
+      <div className='flex flex-col gap-1.5 flex-1'>
+        {items.map((item, i) => (
+          <div key={i} className='flex items-center gap-2 text-gray-400 text-[13px]'>
+            <span className='w-1 h-1 rounded-full bg-[#915EFF] flex-shrink-0' />
+            <span>{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </motion.div>
 );
 
 const About = () => {
+  const [imgError, setImgError] = React.useState(false);
+
   return (
     <>
-      {/* Heading section */}
       <motion.div variants={textVariant()} className='-mt-20 sm:mt-0'>
-        <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview.</h2>
+        <p className={styles.sectionSubText}>About Me</p>
+        <h2 className={styles.sectionHeadText}>Who I Am.</h2>
       </motion.div>
 
-      {/* Social buttons section */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className='mt-12 flex flex-col gap-4 sm:flex-row sm:gap-8'
-      >
-        {/* First row - 3 buttons on mobile, all 4 on desktop */}
-        <div className='flex gap-4 sm:gap-8 justify-center sm:justify-start flex-wrap'>
-          {[
-            {
-              name: "GitHub",
-              link: "https://github.com/AadityaMahajan03",
-            },
-            {
-              name: "LinkedIn",
-              link: "https://www.linkedin.com/in/aaditya-mahajan0/",
-            },
-            {
-              name: "LeetCode",
-              link: "https://leetcode.com/u/",
-            },
-          ].map(({ name, link }) => (
+      <div className='mt-12 flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-16'>
+        {/* Profile Photo */}
+        <motion.div
+          variants={fadeIn("right", "spring", 0.2, 0.75)}
+          className='flex-shrink-0'
+        >
+          <div className='relative w-52 h-52 sm:w-60 sm:h-60'>
+            <div className='absolute inset-0 rounded-full bg-gradient-to-br from-[#915EFF] to-[#0f3460] p-[3px]'>
+              <div className='w-full h-full rounded-full bg-tertiary overflow-hidden flex items-center justify-center'>
+                {imgError ? (
+                  <div className='text-[#915EFF] text-6xl font-bold bg-[#1a1a2e] w-full h-full flex items-center justify-center'>
+                    A
+                  </div>
+                ) : (
+                  <img
+                    src="/IMG_0063.jpeg"
+                    alt="Aaditya Mahajan"
+                    className='w-full h-full object-cover'
+                    onError={() => setImgError(true)}
+                  />
+                )}
+              </div>
+            </div>
+            <div className='absolute -inset-4 rounded-full bg-[#915EFF]/10 blur-2xl -z-10' />
+          </div>
+        </motion.div>
+
+        {/* Bio & Links */}
+        <motion.div
+          variants={fadeIn("left", "spring", 0.3, 0.75)}
+          className='flex-1 text-center lg:text-left'
+        >
+          <h3 className='text-white text-3xl sm:text-4xl font-bold mb-3'>
+            Aaditya <span className='text-[#915EFF]'>Mahajan</span>
+          </h3>
+          <p className='text-[#915EFF] font-medium text-lg mb-5'>
+            Full Stack & Android Developer
+          </p>
+
+          <motion.p
+            variants={fadeIn("", "", 0.1, 1)}
+            className='text-secondary text-[17px] leading-[30px] mb-6'
+          >
+            I'm a Full Stack & Android Developer specializing in creating responsive websites, custom web applications, and native Android apps. From idea to deployment, I build complete digital solutions with clean code, modern technologies, and a focus on user experience.
+          </motion.p>
+
+          <div className='flex gap-4 justify-center lg:justify-start flex-wrap'>
             <motion.a
-              key={name}
-              href={link}
+              href="https://github.com/AadityaMahajan03"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className='bg-tertiary rounded-[10px] py-3 px-3 flex-1 sm:flex-none text-center shadow-md hover:shadow-lg transition'
+              className='bg-tertiary border border-[#0f3460]/50 rounded-[10px] py-3 px-6 text-center shadow-md hover:shadow-lg hover:border-[#915EFF]/50 transition'
             >
-              {name}
+              <span className='text-white font-medium'>GitHub</span>
             </motion.a>
-          ))}
-
-          {/* CV button - visible on desktop only */}
-          <motion.a
-            href={cv}
-            target='_blank'
-            rel='noopener noreferrer'
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className='bg-tertiary rounded-[10px] py-3 px-3 hidden sm:flex text-center shadow-md hover:shadow-lg transition'
-          >
-            See CV
-          </motion.a>
-        </div>
-
-        {/* Second row - CV button only on mobile */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className='flex justify-center sm:hidden'
-        >
-          <motion.a
-            href={cv}
-            target='_blank'
-            rel='noopener noreferrer'
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className='bg-tertiary rounded-[10px] py-3 px-3 w-32 text-center shadow-md hover:shadow-lg transition'
-          >
-            See CV
-          </motion.a>
+            <motion.a
+              href="https://www.linkedin.com/in/aaditya-mahajan0/"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className='bg-tertiary border border-[#0f3460]/50 rounded-[10px] py-3 px-6 text-center shadow-md hover:shadow-lg hover:border-[#915EFF]/50 transition'
+            >
+              <span className='text-white font-medium'>LinkedIn</span>
+            </motion.a>
+          </div>
         </motion.div>
-      </motion.div>
+      </div>
 
-      {/* Description paragraph */}
-      <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
-        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
-      >
-        I’m a skilled software developer proficient in Java, C, C++, Python, and JavaScript,
-        with expertise in Django, React.js, Node.js, and Next.js. A quick learner and collaborative partner,
-        I work closely with clients to craft efficient, scalable, and user‑friendly solutions to real‑world challenges.
-      </motion.p>
-
-      {/* Services section */}
-      <div className='mt-8 flex flex-wrap gap-10'>
+      {/* Service Cards */}
+      <div className='mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 justify-items-center'>
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
