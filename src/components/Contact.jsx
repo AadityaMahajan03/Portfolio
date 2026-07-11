@@ -79,6 +79,17 @@ const Contact = () => {
           Whether you need a business website, a custom web application, or an Android app, I'd love to help bring your ideas to life.
         </p>
 
+        <div className='mt-6 flex flex-col gap-3 text-secondary text-[15px]'>
+          <div className='flex items-center gap-3'>
+            <div className='w-2 h-2 bg-gradient-to-br from-[#915EFF] to-[#6C63FF] rotate-45 flex-shrink-0' />
+            <a href='mailto:mahajanaaditya50@gmail.com' className='hover:text-white transition'>mahajanaaditya50@gmail.com</a>
+          </div>
+          <div className='flex items-center gap-3'>
+            <div className='w-2 h-2 bg-gradient-to-br from-[#915EFF] to-[#6C63FF] rotate-45 flex-shrink-0' />
+            <a href='tel:+919307227251' className='hover:text-white transition'>+91 9307227251</a>
+          </div>
+        </div>
+
         <form
           ref={formRef}
           onSubmit={handleSubmit}
